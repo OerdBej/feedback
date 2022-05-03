@@ -1,12 +1,14 @@
 import FeebackItem from "./FeedbackItem";
 import PropTypes from "prop-types";
 
-//🎈 destructuring and passing the props from another component.
+//🎈 destructuring and passing the props from another component.HandleDelete is a props that we have getting from the parent component.
 
 const FeedbackList = ({ feedback, handleDelete }) => {
   if (!feedback || feedback.length === 0) {
     return <p>No Feedback yet</p>;
   }
+
+  //!
 
   //🎈 Getting the props as a State from App and passing throgh this in order to do the map()
   return (
