@@ -39,7 +39,7 @@ const FeedbackData = [
     id: 7,
     rating: 4,
     text: "MySQL",
-    bio: "MySQL is an open-source relational database management system (RDBMS). Its name is a combination of MySQL is the name of co-founder Michael Widenius's daughter, and SQL, the abbreviation for Structured Query Language.",
+    bio: "MySQL is an open-source relational database management system (RDBMS). Its name is a combination of MySQL is the name of co-founder Michael Widenius's daughter, and SQL,the abbreviation for Structured Query Language.",
   },
 ];
 
