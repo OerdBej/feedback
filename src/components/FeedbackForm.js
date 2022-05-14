@@ -5,7 +5,7 @@ import RatingSelect from "./RatingSelect";
 
 
 
-const FeedbackForm = () => {
+const FeedbackForm = ({handleAdd}) => {
 
 
 // 💡You cannot submit with a button until its 10 characters
@@ -36,13 +36,16 @@ const FeedbackForm = () => {
         e.preventDefault()
         if(text.trim().length > 10) {
             const newFeedback = {
+                // 💡This is the value of the state
                 text: text,
                 rating: rating,
             }
 
-            console.log(newFeedback)
+            handleAdd(newFeedback)
+
+            setText('');
         }
-    }
+    }  
 
 
     return (
