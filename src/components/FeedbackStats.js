@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 const FeedbackStats = ({ feedback }) => {
   //!calculating the ratings avg: loop through the ratings and
 
+
+  // 🤔
   let average =
     feedback.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.rating;

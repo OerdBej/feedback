@@ -1,34 +1,65 @@
 import Card from "./Card/Card";
 import {useState} from 'react'
+import Button from "./Card/Button";
+import RatingSelect from "./RatingSelect";
 
 
 
 const FeedbackForm = () => {
 
 
-    // we usually catch the user type in of the form into a state to store it in order that whatever we type in we catch into the state 💡
+// 💡You cannot submit with a button until its 10 characters
 
-
-    const [text, setState] = useState('');
+    const [text, setText] = useState('');
+    const [rating, setRating] = useState(10);
+    const [btnDisabled, setBtnDisabled] = useState(true);
+    const [message, setMessage] = useState('');
 
     const handleTextChange = (e) => {
-        // console.log(e.target.value);
-        setState(e.target.value);
-
+        if (text === '') {
+            setBtnDisabled(true)
+            // there is no point in display if there is no TEXT
+            setMessage(null)
+            // if the text is not equal to nothing, so if something in TEXT and is less than 10 character we are going any white space with the trim method
+        } else if(text !== '' && text.trim().length <= 10) {
+            setMessage('Text must be at least 10 characters')
+            setBtnDisabled(true)
+        } else {
+            setMessage(null) 
+            setBtnDisabled(false)
+                 }           
+        setText(e.target.value)
     }
+ 
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(text.trim().length > 10) {
+            const newFeedback = {
+                text: text,
+                rating: rating,
+            }
+
+            console.log(newFeedback)
+        }
+    }
 
 
     return (
         <Card>
 
-            <form>
+            <form onSubmit ={handleSubmit}>
                 <h2>How wold you rate our services?</h2>
-                {/* here the rating select component */}
+                <RatingSelect select={(rating) => setRating(rating)} />
+
                 <div className="input-group">
                     <input type="text" placeholder="write a review" onChange={handleTextChange} value={text}></input>
-                    <button type="submit">Send</button>
+
+                    <Button type="submit" version='secondary' isDisable={btnDisabled} >Send</Button>
                 </div>
+
+                {message && <div className="message">{message}</div>}
+        
             </form>
             
             
@@ -39,5 +70,3 @@ const FeedbackForm = () => {
 }
 
 export default FeedbackForm;
-
-
